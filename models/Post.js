@@ -5,7 +5,7 @@ const PostSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: "users",
 	},
-	test: {
+	text: {
 		type: String,
 		required: true,
 	},
@@ -51,4 +51,4 @@ const PostSchema = new Schema({
 	},
 });
 
-moudle.exports = Post = mongoose.model("post", PostSchema);
+module.exports = Post = mongoose.model("post", PostSchema);
