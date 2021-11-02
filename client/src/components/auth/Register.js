@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { setAlert } from "../../store/actions/alert";
+import { register } from "../../store/actions/auth";
 import { useDispatch } from "react-redux";
 const Register = () => {
 	const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Register = () => {
 		if (password !== password2) {
 			dispatch(setAlert("Password do not match", "danger"));
 		} else {
-			console.log("Success");
+			dispatch(register({ name, email, password }));
 		}
 	};
 	return (
