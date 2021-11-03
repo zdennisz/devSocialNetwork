@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../../store/actions/alert";
 import { register } from "../../store/actions/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 const Register = () => {
 	const dispatch = useDispatch();
+	const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -25,6 +26,12 @@ const Register = () => {
 			dispatch(register({ name, email, password }));
 		}
 	};
+
+	// Redirect if authenticated
+	if (isAuthenticated) {
+		return <Redirect to='/dashboard' />;
+	}
+
 	return (
 		<>
 			<h1 className='large text-primary'>Sign Up</h1>
