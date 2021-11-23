@@ -2,7 +2,6 @@ import axios from "axios";
 import { GET_PROFILE, PROFILE_ERROR } from "./types";
 
 export const getCurrentProfile = () => async (dispatch) => {
-	console.log("inside getCurrentProfile");
 	try {
 		const res = await axios.get("api/profile/me");
 		dispatch({ type: GET_PROFILE, payload: res.data });
