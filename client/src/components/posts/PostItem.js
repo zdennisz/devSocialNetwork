@@ -2,17 +2,23 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Moment from "react-moment";
 import { useSelector, useDispatch } from "react-redux";
-import { addLike, removeLike } from "../../store/actions/post";
+import { addLike, removeLike, deletePost } from "../../store/actions/post";
 
 const PostItem = ({
 	post: { _id, text, name, avatar, user, likes, comments, date },
 }) => {
 	const dispatch = useDispatch();
+
 	const addLikeHandler = () => {
 		dispatch(addLike(_id));
 	};
+
 	const removeLikeHandler = () => {
 		dispatch(removeLike(_id));
+	};
+
+	const deletePostHandler = () => {
+		dispatch(deletePost(_id));
 	};
 	const auth = useSelector((state) => state.auth);
 	return (
@@ -50,7 +56,11 @@ const PostItem = ({
 					)}
 				</Link>
 				{!auth.loading && user === auth.user._id && (
-					<button type='button' className='btn btn-danger'>
+					<button
+						type='button'
+						className='btn btn-danger'
+						onClick={deletePostHandler}
+					>
 						<i className='fas fa-times'></i>
 					</button>
 				)}
