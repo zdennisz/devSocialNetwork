@@ -18,6 +18,7 @@ import AddEducation from "./components/profile-forms/AddEducation";
 import Profiles from "./components/profiles/Profiles";
 import Profile from "./components/profile/Profile";
 import Posts from "./components/posts/Posts";
+import Post from "./components/post/Post";
 import { PrivateRouting } from "./components/routing/PrivateRouting";
 
 if (localStorage.token) {
@@ -43,6 +44,7 @@ const App = () => {
 						<Route exact path='/profile/:id' component={Profile} />
 						<PrivateRouting exact path='/dashboard' component={Dashboard} />
 						<PrivateRouting exact path='/posts' component={Posts} />
+						<PrivateRouting exact path='/posts/:id' component={Post} />
 						<PrivateRouting
 							exact
 							path='/add-experience'
