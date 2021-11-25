@@ -6,11 +6,17 @@ import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
 import Spinner from "../layout/Spinner";
+import { deleteAccount } from "../../store/actions/profile";
 
 const Dashboard = (props) => {
 	const dispatch = useDispatch();
 	const { profile, loading } = useSelector((state) => state.profile);
 	const { user } = useSelector((state) => state.auth);
+
+	const deleteAccountHandler = () => {
+		dispatch(deleteAccount());
+	};
+
 	useEffect(() => {
 		dispatch(getCurrentProfile());
 	}, [dispatch]);
@@ -28,6 +34,11 @@ const Dashboard = (props) => {
 					<DashboardActions />
 					<Experience experience={profile.experience} />
 					<Education education={profile.education} />
+					<div className='my-2'>
+						<button className='btn btn-danger' onClick={deleteAccountHandler}>
+							<i className='fas fa-user-minus'></i>Delete My Account
+						</button>
+					</div>
 				</>
 			) : (
 				<>

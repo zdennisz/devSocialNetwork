@@ -92,7 +92,7 @@ const AddEducation = () => {
 							checked={current}
 							onChange={currentJobHandler}
 						/>{" "}
-						Current Job
+						Current School
 					</p>
 				</div>
 				<div className='form-group'>

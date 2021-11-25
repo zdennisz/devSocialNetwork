@@ -1,7 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { deleteExperience } from "../../store/actions/profile";
 import Moment from "react-moment";
 const Experience = ({ experience }) => {
+	const dispatch = useDispatch();
+
+	const deleteExperienceHandler = (id) => {
+		dispatch(deleteExperience(id));
+	};
+
 	const experiences = experience.map((exp) => (
 		<tr key={exp._id}>
 			<td>{exp.company}</td>
@@ -15,7 +22,12 @@ const Experience = ({ experience }) => {
 				)}
 			</td>
 			<td>
-				<button className='btn btn-danger'>Delete</button>
+				<button
+					className='btn btn-danger'
+					onClick={deleteExperienceHandler.bind(this, exp._id)}
+				>
+					Delete
+				</button>
 			</td>
 		</tr>
 	));
