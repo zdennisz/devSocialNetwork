@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { getPosts } from "../../store/actions/post";
 import { useDispatch, useSelector } from "react-redux";
 import PostItem from "./PostItem";
+import PostForm from "./PostForm";
 import Spinner from "../layout/Spinner";
 const Posts = () => {
 	const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Posts = () => {
 			<p className='lead'>
 				<i className='fas fa-user'></i>Welcome to the community
 			</p>
+			<PostForm />
 			<div className='posts'>
 				{posts.map((post) => (
 					<PostItem key={post._id} post={post} />
