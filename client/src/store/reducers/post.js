@@ -70,7 +70,7 @@ const postReducer = (state = initialState, action) => {
 				...state,
 				post: {
 					...state.post,
-					comments: state.post.commnets.filter(
+					comments: state.post.comments.filter(
 						(comment) => comment._id !== payload
 					),
 				},
