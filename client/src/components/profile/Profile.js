@@ -5,6 +5,7 @@ import Spinner from "../layout/Spinner";
 import ProfileTop from "./ProfileTop";
 import ProfileAbout from "./ProfileAbout";
 import ProfileExperience from "./ProfileExperience";
+import ProfileGithub from "./ProfileGithub";
 import ProfileEducation from "./ProfileEducation";
 import { Link } from "react-router-dom";
 const Profile = ({ match }) => {
@@ -65,6 +66,9 @@ const Profile = ({ match }) => {
 								<h4>No education ceredentials</h4>
 							)}
 						</div>
+						{profile.githubusername && (
+							<ProfileGithub username={profile.githubusername} />
+						)}
 					</div>
 				</>
 			)}
